@@ -22,6 +22,80 @@ nav .nav-links li a:hover { color:#004d40; }
 .fade-in { opacity:0; transform:translateY(20px); transition:all 0.8s ease; }
 .fade-in.show { opacity:1; transform:translateY(0); }
 
+/* Experience */
+.timeline { border-left:3px solid #00796b; padding-left:20px; }
+.timeline-item { margin-bottom:20px; }
+.timeline-item h3 { color:#004d40; }
+
+/* Education Section */
+#education {
+  background:#ffffff;
+}
+
+#education h2 {
+  margin-bottom:30px;
+  text-align:left;
+}
+
+.accordion {
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.accordion-item {
+  border:1px solid #e0e0e0;
+  border-radius:10px;
+  overflow:hidden;
+  background:#f9fbe7;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+.accordion-header {
+  width:100%;
+  text-align:left;
+  padding:15px 20px;
+  background:#e8f5e9;
+  font-size:1rem;
+  font-weight:600;
+  color:#004d40;
+  border:none;
+  outline:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  transition:background 0.3s;
+}
+
+.accordion-header:hover {
+  background:#dcedc8;
+}
+
+.accordion-header .icon {
+  font-weight:bold;
+  font-size:1.2rem;
+  transition:transform 0.3s;
+}
+
+.accordion-header.active .icon {
+  transform:rotate(45deg); /* turn + into x */
+}
+
+.accordion-content {
+  max-height:0;
+  overflow:hidden;
+  background:#ffffff;
+  padding:0 20px;
+  color:#333;
+  transition:max-height 0.4s ease, padding 0.3s ease;
+}
+
+.accordion-content.open {
+  padding:15px 20px;
+  max-height:300px; /* enough to show text */
+}
+
 /* Skills */
 .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; }
 .skill-card { background:#e0f2f1; padding:20px; border-radius:12px; text-align:center; transition:0.3s; }
@@ -36,11 +110,6 @@ nav .nav-links li a:hover { color:#004d40; }
 .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:2000; }
 .modal-content { background:#fff; padding:30px; border-radius:12px; width:90%; max-width:600px; }
 .close { float:right; font-size:1.5em; cursor:pointer; }
-
-/* Experience */
-.timeline { border-left:3px solid #00796b; padding-left:20px; }
-.timeline-item { margin-bottom:20px; }
-.timeline-item h3 { color:#004d40; }
 
 /* Contact */
 #contact form { display:flex; flex-direction:column; gap:15px; max-width:400px; margin:0 auto; }
