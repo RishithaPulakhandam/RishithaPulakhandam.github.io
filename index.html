@@ -1,261 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rishitha Pulakhandam — Bioinformatician</title>
-
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rishitha P. | Bioinformatics Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <!-- simple DNA-ish icon -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 3 C8 6 8 10 6 13 C4 16 6 21 10 21" stroke="#067d68" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M18 3 C16 6 16 10 18 13 C20 16 18 21 14 21" stroke="#2a9d8f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <div class="name">Rishitha P.</div>
-          <div class="role">Bioinformatician</div>
-        </div>
-      </div>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">🧬 Rishitha P.</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-      <nav class="main-nav" id="mainNav">
-        <a href="#hero" class="nav-link" data-target="hero">Home</a>
-        <a href="#skills" class="nav-link" data-target="skills">Skills</a>
-        <a href="#projects" class="nav-link" data-target="projects">Work</a>
-        <a href="#experience" class="nav-link" data-target="experience">Experience</a>
-        <a href="#contact" class="nav-link" data-target="contact">Contact</a>
-      </nav>
+  <!-- Hero -->
+  <section id="hero" class="fade-in">
+    <h1>Hi, I’m <span>Rishitha</span></h1>
+    <p>Bioinformatician exploring genomes through computation.</p>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>
+      I am a bioinformatician passionate about integrating genomics, 
+      data science, and computational biology to derive meaningful insights.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="fade-in">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">Python</div>
+      <div class="skill-card">R</div>
+      <div class="skill-card">Nextflow</div>
+      <div class="skill-card">RNA-seq</div>
+      <div class="skill-card">ChIP-seq</div>
+      <div class="skill-card">Machine Learning</div>
     </div>
-  </header>
+  </section>
 
-  <!-- HERO -->
-  <main>
-    <section id="hero" class="section hero-section reveal">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Decoding biology through computation</h1>
-          <p class="lead">Bioinformatics • RNA-seq • Motif detection • Reproducible pipelines</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#projects">View Work</a>
-            <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-          </div>
-        </div>
-
-        <!-- subtle DNA svg background element -->
-        <div class="hero-graphic" aria-hidden="true">
-          <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <linearGradient id="g1" x1="0" x2="1">
-                <stop offset="0" stop-color="#e6fffa" />
-                <stop offset="1" stop-color="#ffffff" />
-              </linearGradient>
-            </defs>
-            <rect width="600" height="400" fill="url(#g1)"></rect>
-            <!-- sinuous DNA line -->
-            <path d="M20 200 C100 80, 200 320, 300 200 S500 80,580 200" stroke="#bfece6" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.7"/>
-            <g fill="#d3f1ec" opacity="0.9">
-              <circle cx="80" cy="160" r="6"></circle>
-              <circle cx="160" cy="240" r="5"></circle>
-              <circle cx="240" cy="160" r="5"></circle>
-              <circle cx="360" cy="240" r="6"></circle>
-            </g>
-          </svg>
-        </div>
+  <!-- Projects -->
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card" onclick="openModal('modal1')">
+        <h3>Motif Detection Tool</h3>
+        <p>FASTA motif annotation platform.</p>
       </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section reveal">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <p class="section-sub">Core tools & methods I use regularly.</p>
-
-        <div class="skills-grid" role="list">
-          <!-- each skill acts like a "cell" widget -->
-          <button class="skill-cell" data-skill="Python" aria-label="Python — click to see related projects">
-            <div class="skill-name">Python</div>
-            <div class="skill-desc">Scripting, pandas, Biopython</div>
-          </button>
-
-          <button class="skill-cell" data-skill="R" aria-label="R — click to see related projects">
-            <div class="skill-name">R</div>
-            <div class="skill-desc">DESeq2, ggplot2</div>
-          </button>
-
-          <button class="skill-cell" data-skill="Nextflow" aria-label="Nextflow — click to see related projects">
-            <div class="skill-name">Nextflow</div>
-            <div class="skill-desc">Reproducible pipelines</div>
-          </button>
-
-          <button class="skill-cell" data-skill="RNA-seq" aria-label="RNA-seq — click to see related projects">
-            <div class="skill-name">RNA-seq</div>
-            <div class="skill-desc">QC, alignment, DE</div>
-          </button>
-
-          <button class="skill-cell" data-skill="Motif" aria-label="Motif detection — click to see related projects">
-            <div class="skill-name">Motif Detection</div>
-            <div class="skill-desc">Regulatory motif scans</div>
-          </button>
-
-          <button class="skill-cell" data-skill="Viz" aria-label="Data visualization — click to see related projects">
-            <div class="skill-name">Data Viz</div>
-            <div class="skill-desc">Plotly, D3</div>
-          </button>
-        </div>
+      <div class="project-card" onclick="openModal('modal2')">
+        <h3>RNA-seq Pipeline</h3>
+        <p>Automated multi-omics workflow.</p>
       </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section reveal">
-      <div class="container">
-        <h2 class="section-title">Selected Projects</h2>
-        <p class="section-sub">Click any project to open details.</p>
-
-        <div class="projects-grid">
-          <article class="project-card" data-project="proj-motif" tabindex="0">
-            <div class="project-kicker">Tool</div>
-            <h3 class="project-title">Motif Detection Web Tool</h3>
-            <p class="project-short">Upload sequences, detect motifs, and visualize annotated tracks.</p>
-            <div class="project-meta">Python • MySQL • JS</div>
-          </article>
-
-          <article class="project-card" data-project="proj-rnaseq" tabindex="0">
-            <div class="project-kicker">Analysis</div>
-            <h3 class="project-title">RNA-seq Pipeline</h3>
-            <p class="project-short">QC → alignment → DE analysis with reproducible workflows.</p>
-            <div class="project-meta">Nextflow • STAR • DESeq2</div>
-          </article>
-
-          <article class="project-card" data-project="proj-mirna" tabindex="0">
-            <div class="project-kicker">Network</div>
-            <h3 class="project-title">miRNA Regulatory Network</h3>
-            <p class="project-short">miRNA-target prediction & interaction visualization.</p>
-            <div class="project-meta">Cytoscape.js • Python</div>
-          </article>
-        </div>
+      <div class="project-card" onclick="openModal('modal3')">
+        <h3>miRNA Networks</h3>
+        <p>Novel miRNA target validation.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section reveal">
-      <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <p class="section-sub">Journey across internships and research.</p>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="t-year">2024</div>
-            <div class="t-body">
-              <h4>Rayca Precision — Intern</h4>
-              <p>Data labeling for ML on ultrasound data; developed robust labeling pipelines.</p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="t-year">2023–2025</div>
-            <div class="t-body">
-              <h4>Johns Hopkins — Research Intern</h4>
-              <p>RNA-seq and motif analysis; built a web-based motif annotation tool.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section reveal">
-      <div class="container contact-grid">
-        <div class="contact-card">
-          <h2 class="section-title">Get in touch</h2>
-          <p class="section-sub">I’m open to collaborations and full-time roles in bioinformatics.</p>
-
-          <form id="contactForm" class="contact-form" novalidate>
-            <label class="sr-only" for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required>
-
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="Your email" required>
-
-            <label class="sr-only" for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Short message" required></textarea>
-
-            <div class="form-row">
-              <button class="btn btn-primary" type="submit">Send</button>
-              <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-            </div>
-            <p id="contactStatus" class="muted small"></p>
-          </form>
-        </div>
-
-        <aside class="contact-aside" aria-hidden="true">
-          <div class="aside-card">
-            <h4>Quick links</h4>
-            <ul class="links">
-              <li><a href="https://github.com/rlee8" target="_blank" rel="noopener">GitHub</a></li>
-              <li><a href="https://linkedin.com/in/rlee8" target="_blank" rel="noopener">LinkedIn</a></li>
-              <li><a href="mailto:rlee8@example.com">Email</a></li>
-            </ul>
-          </div>
-
-          <div class="aside-card">
-            <h4>Tech</h4>
-            <p class="muted small">Python • R • Nextflow • Bash • Plotly • Cytoscape.js</p>
-          </div>
-        </aside>
-      </div>
-    </section>
-  </main>
-
-  <!-- Project modals (hidden by default) -->
-  <div id="modalOverlay" class="modal-overlay" aria-hidden="true"></div>
-
-  <div class="modal" id="proj-motif" role="dialog" aria-modal="true" aria-labelledby="proj-motif-title" hidden>
-    <button class="modal-close" aria-label="Close project">✕</button>
-    <div class="modal-body">
-      <h3 id="proj-motif-title">Motif Detection Web Tool</h3>
-      <p class="muted">Tool • Python • MySQL • JavaScript</p>
-      <p>Developed a web-based tool that takes FASTA sequences and detects known regulatory motifs, visualizes matches as interactive tracks, and outputs a summary report. The app uses a MySQL motif database and Python backend for motif scanning.</p>
-      <p><strong>Highlights:</strong> interactive visual annotations, downloadable report, integrated motif database.</p>
-      <div class="modal-links">
-        <a class="btn btn-primary" href="#" target="_blank" rel="noopener">View Repo</a>
-        <a class="btn btn-ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
-      </div>
+  <!-- Modals -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h3>Motif Detection Tool</h3>
+      <p>Built a web tool to detect and annotate regulatory motifs in DNA sequences.</p>
     </div>
   </div>
 
-  <div class="modal" id="proj-rnaseq" role="dialog" aria-modal="true" aria-labelledby="proj-rnaseq-title" hidden>
-    <button class="modal-close" aria-label="Close project">✕</button>
-    <div class="modal-body">
-      <h3 id="proj-rnaseq-title">RNA-seq Pipeline</h3>
-      <p class="muted">Nextflow • STAR • DESeq2</p>
-      <p>A reproducible Nextflow pipeline for RNA-seq: QC, alignment, quantification, and differential expression. Designed for multi-sample experiments with automated reporting and visualization.</p>
-      <div class="modal-links">
-        <a class="btn btn-primary" href="#" target="_blank" rel="noopener">View Repo</a>
-      </div>
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h3>RNA-seq Pipeline</h3>
+      <p>Automated RNA-seq workflow for transcriptome reconstruction and visualization.</p>
     </div>
   </div>
 
-  <div class="modal" id="proj-mirna" role="dialog" aria-modal="true" aria-labelledby="proj-mirna-title" hidden>
-    <button class="modal-close" aria-label="Close project">✕</button>
-    <div class="modal-body">
-      <h3 id="proj-mirna-title">miRNA Regulatory Network</h3>
-      <p class="muted">Cytoscape.js • Python</p>
-      <p>Built interactive miRNA-target networks and visualized regulatory modules; included filtering by significance and exportable subgraphs for downstream analyses.</p>
-      <div class="modal-links">
-        <a class="btn btn-primary" href="#" target="_blank" rel="noopener">View Repo</a>
-      </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h3>miRNA Regulatory Networks</h3>
+      <p>Identified and validated expression of novel miRNAs in Oxycarenus laetus.</p>
     </div>
   </div>
+
+  <!-- Experience -->
+  <section id="experience" class="fade-in">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Rayca Precision (Intern)</h3>
+        <p>Labeled ultrasound data for ML projects.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Johns Hopkins Medicine (Research Intern)</h3>
+        <p>Developed motif detection & RNA-seq analysis pipelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="fade-in">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required/>
+      <input type="email" placeholder="Your Email" required/>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
   <script src="script.js"></script>
 </body>
