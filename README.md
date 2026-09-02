@@ -89,6 +89,6 @@ The website consists of the following sections:
 **Rishitha Pulakhandam**
 
 * Bioinformatics Enthusiast | Genetic Engineering Background
-* Email: `rishithapulakhandam@gmail.com`
-* GitHub: [github.com/rlee8](https://github.com/rlee8)
-* LinkedIn: [linkedin.com/in/rlee8](https://linkedin.com/in/rlee8)
+* Email: `
+* GitHub: 
+* LinkedIn: 
