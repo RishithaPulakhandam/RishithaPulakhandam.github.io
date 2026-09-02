@@ -1,94 +1,44 @@
-# Rishitha Pulakhandam – Bioinformatics Portfolio
+# Rishitha Pulakhandam – Portfolio Website
 
-Welcome to my personal portfolio! This website showcases my **experience, skills, and projects** as a bioinformatician in a clean, minimal, biology-inspired design. It is designed to provide a **professional and interactive overview** of my work, while maintaining a modern and approachable aesthetic.
+Welcome to my personal portfolio! This repository contains the source code for my personal portfolio website.This website showcases my **experience, skills, and projects** as a bioinformatician in a clean, minimal, biology-inspired design. It is designed to provide a **professional and interactive overview** of my work.
 
----
+🌐 **Live Website:**
+https://rishithapulakhandam.github.io/
 
-## **Live Demo**
+## About This Repository
 
-[View Portfolio](#) *(Replace `#` with your deployed GitHub Pages or Vercel/Netlify link)*
+The website is designed as a central place to present my professional work, research, projects, and technical interests in a web-based format.
 
----
+The repository contains the files used to build and deploy the site through **GitHub Pages**.
 
-## **Portfolio Structure**
+## Structure
 
-The website consists of the following sections:
+```text
+.
+├── index.html          # Main portfolio page
+├── styles.css          # Website styling
+├── script.js           # Website functionality
+└── README.md           # Repository documentation
+```
 
-### **1. Hero Section**
+## Deployment
 
-* Landing section introducing myself and my tagline:
-  *“Exploring genomes, one sequence at a time”*
-* Clean, minimal design with subtle biological accents
+The website is deployed using **GitHub Pages** from this repository.
 
-### **2. Skills**
+## Technologies
 
-* Interactive **skill widgets**: Python, R, Nextflow, RNA-seq, ChIP-seq, Data Visualization, Machine Learning
-* Hover tooltips provide brief skill descriptions
-* Designed to highlight **key bioinformatics competencies**
+* HTML
+* CSS
+* JavaScript
+* GitHub Pages
 
-### **3. Experience**
+## License
 
-* Timeline-style layout of professional experience
-* Includes internships and research projects
-* Each entry is presented as a **clean card** with role, organization, and achievements
+This repository is intended primarily as a personal portfolio website. Please do not reproduce personal content, images, or written material without permission.
 
-### **4. Projects**
-
-* Grid layout of select projects
-* Each project card highlights the objective, tools/skills used, and outcome
-* Ready to link to **GitHub repos or live project demos**
-
-### **5. Contact**
-
-* Simple contact form for direct communication
-* Social links: GitHub, LinkedIn, Email
-* Minimal, interactive buttons for professional outreach
-
----
-
-## **Technologies Used**
-
-* **HTML5** – Structure and layout
-* **CSS3** – Styling, grid/flex layouts, responsive design, transitions
-* **JavaScript** – Scroll animations, interactive widgets, fade-in effects
-* Optional for future upgrades: React, Framer Motion, or Three.js for advanced animations
-
----
-
-## **Installation / Deployment**
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/USERNAME/portfolio.git
-   ```
-2. Navigate to the project folder:
-
-   ```bash
-   cd portfolio
-   ```
-3. Open `index.html` in a web browser for a local preview
-4. To deploy:
-
-   * Use **GitHub Pages** (Settings → Pages → select branch `/root`)
-   * Or deploy via **Vercel** / **Netlify** for enhanced hosting
-
----
-
-## **Future Improvements**
-
-* Interactive project modals with screenshots and GitHub links
-* Dynamic skill widgets showing related projects on click
-* Subtle **DNA helix or molecular background animations**
-* Responsive design enhancements for mobile and tablet devices
-
----
 
 ## **Author**
 
 **Rishitha Pulakhandam**
 
-* Bioinformatics Enthusiast | Genetic Engineering Background
-* Email: `
-* GitHub: 
-* LinkedIn: 
+Bioinformatics Enthusiast | Genetic Engineering Background
