@@ -196,7 +196,7 @@ const otherSkills = [
   "NCBI", "AlphaFold", "Ensembl"
 ];
 
-const roles = ["clinical NLP","single-cell genomics", "precision oncology", "Small RNA biology"];
+const roles = ["clinical NLP", "single-cell genomics", "precision oncology", "small RNA biology"];
 
 // ============================================================
 // Hero read track
