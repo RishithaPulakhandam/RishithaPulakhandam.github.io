@@ -7,7 +7,7 @@ const projects = [
   {
     title: "De Novo Transcriptome Reconstruction & Differential Expression",
     description: "RNA-seq analysis of G1E cells and megakaryocytes, from de novo transcriptome reconstruction through DESeq2 differential expression and visualization. Identified 230 differentially expressed genes, 45 of them significant.",
-    tags: ["Galaxy","RNA-seq", "DESeq2", "PCA", "StringTie"],
+    tags: ["RNA-seq", "DESeq2", "PCA", "StringTie"],
     github: "https://github.com/RishithaPulakhandam/RNA_Seq",
     results: {
       objective: "Reconstruct transcripts de novo from RNA-seq reads in G1E cells and megakaryocytes (GEO GSE51338) and identify genes that shift in expression between the two cell states, without relying on a pre-built transcript annotation.",
@@ -30,7 +30,7 @@ const projects = [
   {
     title: "Single-Cell RNA-Seq Pipeline for Cell Type Identification",
     description: "Seurat-based scRNA-seq pipeline in R for PBMC data — clustering, dimensionality reduction, marker gene annotation, and gene expression profiling by cell type.",
-    tags: ["Seurat", "scRNA-seq", "R", "ggplot2"],
+    tags: ["Seurat", "scRNA-seq", "R"],
     github: "https://github.com/RishithaPulakhandam/scRNA-seq",
     results: {
       objective: "Take raw 10x Genomics PBMC single-cell RNA-seq data and resolve it into distinct, correctly identified immune cell populations.",
@@ -52,7 +52,7 @@ const projects = [
   {
     title: "Web-Based Regulatory Motif Detection & Annotation",
     description: "A sequence-based tool for detecting and annotating regulatory motifs in DNA sequences, built to cut analysis time significantly for researchers working with large datasets.",
-    tags: ["Python", "JavaScript","CSS","MySQL","RDBMS"],
+    tags: ["Python", "JavaScript"],
     github: "https://github.com/RishithaPulakhandam/Web-Based-Tool-for-Regulatory-Motif-Detection-and-Annotation",
     results: {
       objective: "Give researchers a web-based way to submit a DNA sequence and get back annotated regulatory motifs, instead of manually cross-referencing sequences against a motif database.",
@@ -121,7 +121,7 @@ const projects = [
   {
     title: "miRNA Identification in Oxycarenus laetus",
     description: "Analyzed microbiome- and metabolism-associated small RNA-seq data to identify six novel miRNAs with miRDeep2, predicted targets with TargetScanFly and miRBase, and validated regulatory roles via stem-loop RT-PCR.",
-    tags: ["Linux","BASH","miRDeep2", "RNA-seq", "RT-PCR","NCBI"],
+    tags: ["miRDeep2", "RNA-seq", "RT-PCR"],
     results: {
       objective: "Identify previously uncharacterized miRNAs in Oxycarenus laetus linked to microbiome and metabolic regulation, and confirm they're real, functional molecules rather than sequencing artifacts.",
       approach: [
@@ -181,24 +181,24 @@ const projects = [
 // Skills shown as clickable chips — these are the ones that appear as tags
 // on at least one project above, so every chip is clickable and meaningful.
 const skillCategories = {
-  "Programming": ["Python", "R", "JavaScript","MySQL","CSS"],
-  "Bioinformatics": ["RNA-seq", "scRNA-seq", "Seurat", "DESeq2", "miRDeep2","IGV"],
+  "Programming": ["Python", "R", "JavaScript"],
+  "Bioinformatics": ["RNA-seq", "scRNA-seq", "Seurat", "DESeq2", "miRDeep2"],
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Scikit-learn"]
-  "Databases": ["NCBI","PDB", "KEGG","UCSC Genome browser","Ensembl"]
 };
 
 // Remaining tools from the resume that aren't tied to a specific project
 // above — shown as a plain reference list beneath the heatmap.
 const otherSkills = [
-  "Bash", "C", "Docker", "Git", "RDBMS", "NGS",
+  "Bash", "C", "MySQL", "CSS", "Docker", "Git", "RDBMS", "NGS", "IGV",
   "Galaxy", "BWA", "STAR", "BLAST", "SRA Toolkit", "Chimera", "Samtools",
   "Kraken", "GATK", "BEDtools", "VCFtools", "ggplot2", "Biopython",
-  "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt", "AlphaFold"
+  "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt",
+  "NCBI", "AlphaFold", "Ensembl"
 ];
 
-const roles = ["clinical NLP", "Genomics & Transcriptomics", "single-cell genomics", "Clinical data analysis","precision oncology", "Computational Biology"];
-biomedical AI",
-  
+const roles = ["clinical NLP", "computational biology", "genomics & transcriptomics",
+  "clinical data analytics","single-cell genomics", "precision oncology", "Computational biology"];
+
 // ============================================================
 // Hero read track
 // ============================================================
