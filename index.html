@@ -13,7 +13,7 @@
 
 <header class="site">
   <nav>
-    <span class="name">                        </span>
+    <span class="name">Rishitha Pulakhandam</span>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
       <span></span><span></span><span></span>
     </button>
@@ -51,7 +51,7 @@
         <button class="job-head" aria-expanded="true">
           <span class="job-title-block">
             <h3>Senior Analyst</h3>
-            <span class="job-meta">Johnson &amp; Johnson (Contractor)·Raritan, NJ</span>
+            <span class="job-meta">Johnson &amp; Johnson (Contractor) · Raritan, NJ</span>
           </span>
           <span class="job-right">
             <span class="dates">Mar 2026 — Present</span>
@@ -60,7 +60,7 @@
         </button>
         <div class="job-body">
           <ul>
-            <li>Contributing to the development of an AI-enabled annotation tool supporting pharmacovigilance causality assessment. The solution combines rule-based approaches with generative AI to produce candidate assessments, reviewed by through a human-in-the-loop workflow.</li>
+            <li>Contributing to the development of an AI-enabled annotation tool supporting pharmacovigilance causality assessment. The solution combines rule-based approaches with generative AI to produce candidate assessments, reviewed by users through a human-in-the-loop workflow.</li>
           </ul>
           <div class="key-areas">
             <span>Biomedical AI</span><span>Generative AI</span><span>Data Annotation</span>
@@ -82,7 +82,7 @@
         </button>
         <div class="job-body">
           <div class="lab-group">
-            <span class="lab-name">Richard Lee Lab <span class="lab-dates">· Aug 2026 – Present</span></span>
+            <span class="lab-name">Richard Lee Lab — Women's Health Research | Stress, Pregnancy &amp; Gene Expression <span class="lab-dates">· Aug 2026 – Present</span></span>
             <ul>
               <li>Contributing to a women's health research project investigating gene expression patterns associated with pregnancy and stress. Analyzing RNA-seq gene expression datasets across experimental groups and applying bioinformatics and statistical approaches to characterize differences between conditions.</li>
             </ul>
@@ -97,11 +97,6 @@
             <ul>
               <li>Running in vitro small RNA analysis on the effects of progesterone on cell lines, comparing expression profiles against stress-hormone-induced changes, and integrating differential expression and pathway enrichment to surface hormone-specific molecular responses.</li>
             </ul>
-            <div class="key-areas">
-              <span>Bioinformatics</span><span>Gene Expression Analysis</span><span>RNA-seq</span>
-              <span>Differential Expression</span><span>Data Visualization</span>
-              <span>Computational Biology</span><span>Statistical Analysis</span>
-            </div>
           </div>
           <div class="lab-group">
             <span class="lab-name">Harrison Bai Lab <span class="lab-dates">· Aug 2024 – Mar 2025</span></span>
@@ -109,7 +104,7 @@
               <li>Researching the intersection of LLMs, NLP, and multimodal electronic health record data to improve radiology report interpretation and clinical decision support, working with PHI-like datasets under institutional research protocols. Modality-specific fine-tuning of large language models improved RadGraph performance for diagnostic entity and relationship extraction.</li>
             </ul>
             <div class="key-areas">
-              <span>Machine learning</span><span>Imaging Data</span><span>LLMs</span>
+              <span>Machine Learning</span><span>Imaging Data</span><span>LLMs</span>
             </div>
           </div>
         </div>
@@ -132,8 +127,8 @@
             <li>Integrated clinical variables with omics data for model development, working across biomedical and patient-associated datasets.</li>
           </ul>
           <div class="key-areas">
-              <span>precision oncology</span><span>Statistical Analysis</span><span>
-            </div>
+            <span>Precision Oncology</span><span>Statistical Analysis</span>
+          </div>
         </div>
       </div>
 
@@ -141,14 +136,15 @@
   </section>
 
   <section id="skills">
-    <div class="section-head"><h2>Skills</h2><</div>
-    <p class="section-hint">Each cell is a skill used in the projects below. Click a cell to filter the project list; click again to clear.</p>
-    <div class="heatmap" id="heatmap" role="group" aria-label="Skills by project usage"></div>
+    <div class="section-head"><h2>Skills</h2></div>
+    <p class="section-hint">Click a skill to filter the projects below; click again to clear.</p>
+    <div class="skills-list" id="skillsList"></div>
     <p class="filter-status" id="filterStatus" aria-live="polite"></p>
   </section>
 
   <section id="projects">
     <div class="section-head"><h2>Projects</h2></div>
+    <p class="section-hint">Click a project to see the full write-up — approach, results, and visuals.</p>
     <div class="projects-grid" id="projectsGrid"></div>
   </section>
 
@@ -190,9 +186,16 @@
       <a href="https://www.linkedin.com/in/rishitha-pulakhandam-183b59219/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/RishithaPulakhandam" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <p class="fine">Rishitha Pulakhandam </p>
+    <p class="fine">Rishitha Pulakhandam</p>
   </div>
 </footer>
+
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

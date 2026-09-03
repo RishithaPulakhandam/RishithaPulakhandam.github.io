@@ -178,10 +178,9 @@ const projects = [
   }
 ];
 
-// Skills shown in the interactive heatmap — these are the ones that appear
-// as tags on at least one project above, so every cell is clickable and
-// meaningful.
-const heatmapSkills = {
+// Skills shown as clickable chips — these are the ones that appear as tags
+// on at least one project above, so every chip is clickable and meaningful.
+const skillCategories = {
   "Programming": ["Python", "R", "JavaScript"],
   "Bioinformatics": ["RNA-seq", "scRNA-seq", "Seurat", "DESeq2", "miRDeep2"],
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Scikit-learn"]
@@ -287,7 +286,7 @@ const roles = ["clinical NLP", "single-cell genomics", "precision oncology", "sm
 })();
 
 // ============================================================
-// Render project cards
+// Render project cards — whole card opens the detail modal
 // ============================================================
 function renderProjects() {
   const grid = document.getElementById("projectsGrid");
@@ -296,6 +295,9 @@ function renderProjects() {
     const card = document.createElement("div");
     card.className = "card";
     card.dataset.tags = p.tags.join("|").toLowerCase();
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-haspopup", "dialog");
 
     const h3 = document.createElement("h3");
     h3.textContent = p.title;
@@ -314,59 +316,87 @@ function renderProjects() {
     card.appendChild(desc);
     card.appendChild(tagWrap);
 
-    const linkRow = document.createElement("div");
-    linkRow.className = "card-links";
-
-    if (p.github) {
-      const link = document.createElement("a");
-      link.className = "repo-link";
-      link.href = p.github;
-      link.target = "_blank";
-      link.rel = "noopener";
-      link.textContent = "View on GitHub →";
-      linkRow.appendChild(link);
-    }
-
     if (p.results) {
-      const resultsId = `results-${idx}`;
-      const toggle = document.createElement("button");
-      toggle.type = "button";
-      toggle.className = "results-toggle";
-      toggle.textContent = "View results";
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-controls", resultsId);
-      linkRow.appendChild(toggle);
-
-      const panel = document.createElement("div");
-      panel.className = "results-panel";
-      panel.id = resultsId;
-      panel.hidden = true;
-      panel.innerHTML = buildResultsHTML(p.results);
-
-      toggle.addEventListener("click", () => {
-        const isOpen = !panel.hidden;
-        panel.hidden = isOpen;
-        toggle.setAttribute("aria-expanded", String(!isOpen));
-        toggle.textContent = isOpen ? "View results" : "Hide results";
-      });
-
-      card.appendChild(linkRow);
-      card.appendChild(panel);
-    } else {
-      card.appendChild(linkRow);
+      const cue = document.createElement("span");
+      cue.className = "card-cue";
+      cue.textContent = "View project details →";
+      card.appendChild(cue);
+    } else if (p.github) {
+      const cue = document.createElement("span");
+      cue.className = "card-cue";
+      cue.textContent = "View on GitHub →";
+      card.appendChild(cue);
     }
+
+    const openHandler = (e) => {
+      // Don't hijack clicks on a real link inside the card
+      if (e.target.closest("a")) return;
+      openProjectModal(p);
+    };
+    card.addEventListener("click", openHandler);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openProjectModal(p);
+      }
+    });
 
     grid.appendChild(card);
   });
 }
+
+// ============================================================
+// Project detail modal
+// ============================================================
+function openProjectModal(p) {
+  const overlay = document.getElementById("modalOverlay");
+  const content = document.getElementById("modalContent");
+
+  const tagsHTML = p.tags.map((t) => `<span>${t}</span>`).join("");
+  const githubHTML = p.github
+    ? `<a class="repo-link" href="${p.github}" target="_blank" rel="noopener">View on GitHub →</a>`
+    : "";
+
+  content.innerHTML = `
+    <h2 id="modalTitle">${p.title}</h2>
+    <div class="tags modal-tags">${tagsHTML}</div>
+    <p class="modal-desc">${p.description}</p>
+    ${githubHTML}
+    ${p.results ? buildResultsHTML(p.results) : ""}
+  `;
+
+  overlay.classList.add("open");
+  overlay.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  document.getElementById("modalClose").focus();
+}
+
+function closeProjectModal() {
+  const overlay = document.getElementById("modalOverlay");
+  overlay.classList.remove("open");
+  overlay.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+(function wireModal() {
+  const overlay = document.getElementById("modalOverlay");
+  document.getElementById("modalClose").addEventListener("click", closeProjectModal);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeProjectModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("open")) closeProjectModal();
+  });
+})();
 
 function buildResultsHTML(r) {
   const list = (items) => `<ul>${items.map((i) => `<li>${i}</li>`).join("")}</ul>`;
   const highlightHTML = r.highlight
     ? `<div class="results-section"><span class="results-label">Notable Finding</span><p class="highlight-text">${r.highlight}</p></div>`
     : "";
-  const visualHTML = r.visual
-    ? `<div class="results-section"><span class="results-label">Visualization</span>${buildVisualHTML(r.visual)}</div>`
+  const visualsArr = r.visuals || (r.visual ? [r.visual] : []);
+  const visualHTML = visualsArr.length
+    ? `<div class="results-section"><span class="results-label">Visualization</span>${visualsArr.map(buildVisualHTML).join("")}</div>`
     : "";
   return `
     <div class="results-section">
@@ -388,6 +418,66 @@ function buildResultsHTML(r) {
       <p>${r.interpretation}</p>
     </div>
   `;
+}
+
+// ---- SVG chart helpers ----
+function scaleFn(domainMin, domainMax, rangeMin, rangeMax) {
+  return (v) => rangeMin + ((v - domainMin) / (domainMax - domainMin)) * (rangeMax - rangeMin);
+}
+
+function svgScatter(groups, opts) {
+  const W = 320, H = 190, padL = 30, padB = 26, padT = 14, padR = 14;
+  const xs = scaleFn(0, 100, padL, W - padR);
+  const ys = scaleFn(0, 100, H - padB, padT);
+  const points = groups.map((g) =>
+    g.points.map((p) => `<circle cx="${xs(p.x).toFixed(1)}" cy="${ys(p.y).toFixed(1)}" r="4.5" fill="${g.color}" fill-opacity="0.85" />`).join("")
+  ).join("");
+  const legend = groups.map((g) =>
+    `<span class="viz-legend-item"><span class="viz-legend-dot" style="background:${g.color}"></span>${g.label}</span>`
+  ).join("");
+  return `
+    <div class="viz viz-scatter">
+      <span class="viz-title">${opts.title}</span>
+      <svg viewBox="0 0 ${W} ${H}" class="viz-svg">
+        <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}" stroke="var(--line)" stroke-width="1" />
+        <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="var(--line)" stroke-width="1" />
+        <text x="${padL - 6}" y="${padT + 6}" class="viz-axis-label" text-anchor="end">${opts.yLabel || ""}</text>
+        <text x="${W - padR}" y="${H - padB + 16}" class="viz-axis-label" text-anchor="end">${opts.xLabel || ""}</text>
+        ${points}
+      </svg>
+      <div class="viz-legend-row">${legend}</div>
+      ${opts.note ? `<span class="viz-note">${opts.note}</span>` : ""}
+    </div>`;
+}
+
+function svgLine(series, opts) {
+  const W = 320, H = 190, padL = 32, padB = 26, padT = 14, padR = 14;
+  const xs = scaleFn(opts.xMin, opts.xMax, padL, W - padR);
+  const ys = scaleFn(opts.yMin, opts.yMax, H - padB, padT);
+  const paths = series.map((s) => {
+    const d = s.points.map((p, i) => `${i === 0 ? "M" : "L"}${xs(p.x).toFixed(1)},${ys(p.y).toFixed(1)}`).join(" ");
+    return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.2" />`;
+  }).join("");
+  const xTicks = (opts.xTicks || []).map((t) =>
+    `<text x="${xs(t).toFixed(1)}" y="${H - padB + 14}" class="viz-tick" text-anchor="middle">${t}</text>`
+  ).join("");
+  const legend = series.map((s) =>
+    `<span class="viz-legend-item"><span class="viz-legend-dot" style="background:${s.color}"></span>${s.label}</span>`
+  ).join("");
+  return `
+    <div class="viz viz-line">
+      <span class="viz-title">${opts.title}</span>
+      <svg viewBox="0 0 ${W} ${H}" class="viz-svg">
+        <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}" stroke="var(--line)" stroke-width="1" />
+        <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="var(--line)" stroke-width="1" />
+        <text x="${padL - 8}" y="${padT + 6}" class="viz-axis-label" text-anchor="end">${opts.yLabel || ""}</text>
+        <text x="${W - padR}" y="${H - padB + 16}" class="viz-axis-label" text-anchor="end">${opts.xLabel || ""}</text>
+        ${xTicks}
+        ${paths}
+      </svg>
+      <div class="viz-legend-row">${legend}</div>
+      ${opts.note ? `<span class="viz-note">${opts.note}</span>` : ""}
+    </div>`;
 }
 
 function buildVisualHTML(v) {
@@ -425,59 +515,44 @@ function buildVisualHTML(v) {
   if (v.type === "stat") {
     return `<div class="viz viz-stat"><span class="viz-stat-value">${v.value}</span><span class="viz-stat-label">${v.label}</span></div>`;
   }
+  if (v.type === "scatter") return svgScatter(v.groups, v);
+  if (v.type === "line") return svgLine(v.series, v);
   return "";
 }
 
 // ============================================================
-// Render the skills heatmap and wire up filtering
+// Render the skills list and wire up filtering
 // ============================================================
-function renderHeatmap() {
-  // Count how many projects reference each skill
-  const counts = {};
-  Object.values(heatmapSkills).flat().forEach((skill) => {
-    counts[skill] = projects.filter((p) =>
-      p.tags.some((t) => t.toLowerCase() === skill.toLowerCase())
-    ).length;
-  });
-  const maxCount = Math.max(...Object.values(counts), 1);
-
-  const container = document.getElementById("heatmap");
+function renderSkillsList() {
+  const container = document.getElementById("skillsList");
   container.innerHTML = "";
   let activeSkill = null;
 
-  Object.entries(heatmapSkills).forEach(([category, skills]) => {
+  Object.entries(skillCategories).forEach(([category, skills]) => {
     const row = document.createElement("div");
-    row.className = "heat-row";
+    row.className = "skill-row";
 
     const label = document.createElement("div");
-    label.className = "heat-label";
+    label.className = "skill-label";
     label.textContent = category;
     row.appendChild(label);
 
     const cellsWrap = document.createElement("div");
-    cellsWrap.className = "heat-cells";
+    cellsWrap.className = "skill-cells";
 
     skills.forEach((skill) => {
-      const count = counts[skill];
-      const alpha = 0.12 + 0.72 * (count / maxCount);
       const cell = document.createElement("button");
-      cell.className = "heat-cell";
+      cell.className = "skill-chip";
       cell.type = "button";
-      cell.textContent = `${skill} · ${count}`;
-      cell.style.background = `rgba(31, 111, 107, ${alpha.toFixed(2)})`;
-      if (alpha > 0.5) cell.style.color = "#FAFAF8";
+      cell.textContent = skill;
       cell.dataset.skill = skill.toLowerCase();
       cell.setAttribute("aria-pressed", "false");
 
       cell.addEventListener("click", () => {
         const skillKey = cell.dataset.skill;
-        if (activeSkill === skillKey) {
-          activeSkill = null;
-        } else {
-          activeSkill = skillKey;
-        }
+        activeSkill = activeSkill === skillKey ? null : skillKey;
         applyFilter(activeSkill);
-        container.querySelectorAll(".heat-cell").forEach((c) => {
+        container.querySelectorAll(".skill-chip").forEach((c) => {
           const isActive = c.dataset.skill === activeSkill;
           c.classList.toggle("active", isActive);
           c.setAttribute("aria-pressed", String(isActive));
@@ -491,19 +566,17 @@ function renderHeatmap() {
     container.appendChild(row);
   });
 
-  // "Also worked with" static reference list
+  // "Also used" static reference list — not tied to a specific project below
   const otherRow = document.createElement("div");
-  otherRow.className = "heat-row";
+  otherRow.className = "skill-row";
   const otherLabel = document.createElement("div");
-  otherLabel.className = "heat-label";
+  otherLabel.className = "skill-label";
   otherLabel.textContent = "Also used";
   const otherCells = document.createElement("div");
-  otherCells.className = "heat-cells";
+  otherCells.className = "skill-cells";
   otherSkills.forEach((skill) => {
     const span = document.createElement("span");
-    span.className = "heat-cell";
-    span.style.cursor = "default";
-    span.style.background = "var(--paper-raised)";
+    span.className = "skill-chip static";
     span.textContent = skill;
     otherCells.appendChild(span);
   });
@@ -531,7 +604,7 @@ function applyFilter(skillKey) {
     status.innerHTML = `Showing ${shown} project${shown === 1 ? "" : "s"} using ${label}.<button id="clearFilter" type="button">Clear</button>`;
     document.getElementById("clearFilter").addEventListener("click", () => {
       applyFilter(null);
-      document.querySelectorAll(".heat-cell").forEach((c) => {
+      document.querySelectorAll(".skill-chip").forEach((c) => {
         c.classList.remove("active");
         c.setAttribute("aria-pressed", "false");
       });
@@ -542,4 +615,4 @@ function applyFilter(skillKey) {
 }
 
 renderProjects();
-renderHeatmap();
+renderSkillsList();
