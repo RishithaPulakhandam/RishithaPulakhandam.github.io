@@ -175,6 +175,46 @@ const projects = [
       interpretation: "Testing a classical time-series model against a tree-based model on the same data is a useful sanity check — if a simpler ARIMA/SARIMA model performs competitively with Random Forest, that suggests the trend is largely driven by autocorrelation and seasonality rather than complex non-linear interactions.",
       visual: { type: "stat", value: "75%", label: "Best model forecast accuracy" }
     }
+  },
+    {
+    title: "Regulatory and Structural Impact of SNP rs150260808 on TCIRG1 in Osteoclast-Mediated Bone Resorption",
+    description: "A collaborative research study (JHU Advanced Academic Programs) combining protein structural modeling, NGS analysis, and regulatory genomics to characterize a rare TCIRG1 missense variant linked to osteopetrosis.",
+    tags: ["AlphaFold", "PyMOL", "RNA-seq", "GTEx"],
+    results: {
+      objective: "Determine whether the missense SNP rs150260808 (I721N) in TCIRG1 — the gene encoding the a3 subunit of the osteoclast V-ATPase proton pump — disrupts protein structure and/or gene regulation in a way that could explain its role in osteopetrosis.",
+      approach: [
+        "Modeled wild-type and mutant (I721N) a3 subunit structures with AlphaFold v2.2.0 (sequence from UniProt Q13488), then aligned and analyzed them in PyMOL for deviations and hydrophobicity changes in the transmembrane domain.",
+        "Ran a multi-step NGS pipeline across 5 datasets (1000 Genomes, gnomAD v4.1.0, NCBI miRNA profiles, ENA FASTQ data, and RNA-seq from a TCIRG1-mutated patient) — QC with FastQC, alignment with Bowtie2, variant calling with FreeBayes, and annotation with SnpEff, all in Galaxy.",
+        "Assessed regulatory impact by checking CTCF binding-site overlap against ENCODE ChIP-seq data and modeling chromatin looping with 4D Nucleome Hi-C data.",
+        "Compared TCIRG1 expression between wild-type and mutant genotypes using GTEx v8 data and multivariate regression (adjusted for age, sex, tissue).",
+        "Scored functional impact with SIFT, PolyPhen-2, and PROVEAN, and checked allele frequency across populations using gnomAD and 1000 Genomes.",
+        "Proposed a CRISPR-Cas9 validation plan: introduce the mutation into osteoclast precursor cells, differentiate them, then measure proton transport (pH-sensitive dyes) and bone resorption directly."
+      ],
+      keyResults: [
+        "AlphaFold + PyMOL modeling showed the I721N substitution disrupts the hydrophobic core of the transmembrane domain, replacing nonpolar isoleucine with polar asparagine.",
+        "All three pathogenicity predictors agreed: SIFT called it deleterious (0.01), PolyPhen-2 called it probably damaging (0.998), and PROVEAN called it damaging (-5.56).",
+        "The SNP sits inside a CTCF binding site; ENCODE data indicated disrupted CTCF binding, and GTEx data showed significantly lower TCIRG1 expression in carriers of the mutant allele, especially in bone marrow and spleen.",
+        "The variant is rare: 0.0445% global allele frequency, highest in European populations (0.047%), and found in only 1 of the 5 NGS datasets screened (gnomAD).",
+        "Comparable to known pathogenic TCIRG1 missense mutations (I287M, L802P) that also destabilize the V-ATPase complex — positioning I721N as a likely partial (not complete) loss-of-function variant."
+      ],
+      highlight: "The most interesting finding is that this SNP looks like it acts through two independent mechanisms at once: it destabilizes the V-ATPase protein directly (structural), and it sits in a CTCF binding site that appears to suppress TCIRG1 expression (regulatory). Most variant-impact studies only characterize one of these — catching both in the same variant is what makes the case for pathogenicity stronger than either finding alone.",
+      interpretation: "Convergent evidence across three independent methods — structural modeling, functional prediction algorithms, and expression data — all pointing the same direction is what makes this more than a single computational red flag. That said, every one of these lines of evidence is still in-silico; the CRISPR validation plan proposed in the study is the actual test of whether this holds up in living cells, which is an important caveat to be upfront about in an interview.",
+      visuals: [
+        { type: "stat", value: "0.01 / 0.998 / -5.56", label: "SIFT / PolyPhen-2 / PROVEAN — all three call I721N damaging" },
+        {
+          type: "bars",
+          title: "Allele frequency by population (Table 1, gnomAD + 1000 Genomes)",
+          bars: [
+            { label: "African/African-American", value: 0.0060, total: 0.0060, suffix: "%" },
+            { label: "European (non-Finnish)", value: 0.0049, total: 0.0060, suffix: "%" },
+            { label: "Remaining", value: 0.0033, total: 0.0060, suffix: "%" },
+            { label: "Admixed American", value: 0.0027, total: 0.0060, suffix: "%" },
+            { label: "South Asian", value: 0.0023, total: 0.0060, suffix: "%" },
+            { label: "Total (all populations)", value: 0.0040, total: 0.0060, suffix: "%" }
+          ]
+        }
+      ]
+    }
   }
 ];
 
@@ -183,6 +223,7 @@ const projects = [
 const skillCategories = {
   "Programming": ["Python", "R", "JavaScript"],
   "Bioinformatics": ["RNA-seq", "scRNA-seq", "Seurat", "DESeq2", "miRDeep2"],
+  "Structural Biology": ["AlphaFold", "PyMOL", "GTEx"],
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Scikit-learn"]
 };
 
@@ -193,7 +234,7 @@ const otherSkills = [
   "Galaxy", "BWA", "STAR", "BLAST", "SRA Toolkit", "Chimera", "Samtools",
   "Kraken", "GATK", "BEDtools", "VCFtools", "ggplot2", "Biopython",
   "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt",
-  "NCBI", "AlphaFold", "Ensembl"
+  "NCBI", "Ensembl"
 ];
 
 const roles = ["clinical NLP", "single-cell genomics", "precision oncology", "small RNA biology"];
