@@ -7,7 +7,7 @@ const projects = [
   {
     title: "De Novo Transcriptome Reconstruction & Differential Expression",
     description: "RNA-seq analysis of G1E cells and megakaryocytes, from de novo transcriptome reconstruction through DESeq2 differential expression and visualization. Identified 230 differentially expressed genes, 45 of them significant.",
-    tags: ["RNA-seq", "DESeq2", "PCA", "StringTie"],
+    tags: ["Galaxy", "RNA-seq", "DESeq2", "PCA", "StringTie"],
     github: "https://github.com/RishithaPulakhandam/RNA_Seq",
     results: {
       objective: "Reconstruct transcripts de novo from RNA-seq reads in G1E cells and megakaryocytes (GEO GSE51338) and identify genes that shift in expression between the two cell states, without relying on a pre-built transcript annotation.",
@@ -52,7 +52,7 @@ const projects = [
   {
     title: "Web-Based Regulatory Motif Detection & Annotation",
     description: "A sequence-based tool for detecting and annotating regulatory motifs in DNA sequences, built to cut analysis time significantly for researchers working with large datasets.",
-    tags: ["Python", "JavaScript"],
+    tags: ["Python", "JavaScript","CSS", "MySQL"],
     github: "https://github.com/RishithaPulakhandam/Web-Based-Tool-for-Regulatory-Motif-Detection-and-Annotation",
     results: {
       objective: "Give researchers a web-based way to submit a DNA sequence and get back annotated regulatory motifs, instead of manually cross-referencing sequences against a motif database.",
@@ -97,7 +97,7 @@ const projects = [
   {
     title: "Thyroid Carcinoma Classification Pipeline",
     description: "A precision-driven classification pipeline for thyroid carcinoma, optimizing preprocessing and feature selection with k-NN and PCA for accurate classification.",
-    tags: ["k-NN", "PCA", "Python"],
+    tags: ["k-NN", "PCA", "R", "ggplot2"],
     github: "https://github.com/RishithaPulakhandam/Thyroid-Carcinoma-Analysis-Pipeline",
     results: {
       objective: "Distinguish papillary from anaplastic thyroid carcinoma samples (GEO dataset GSE55933) using gene expression, and identify which genes drive that separation.",
@@ -121,7 +121,7 @@ const projects = [
   {
     title: "miRNA Identification in Oxycarenus laetus",
     description: "Analyzed microbiome- and metabolism-associated small RNA-seq data to identify six novel miRNAs with miRDeep2, predicted targets with TargetScanFly and miRBase, and validated regulatory roles via stem-loop RT-PCR.",
-    tags: ["miRDeep2", "RNA-seq", "RT-PCR"],
+    tags: ["miRDeep2", "RNA-seq", "Stem-loop RT-PCR", "Bash"],
     results: {
       objective: "Identify previously uncharacterized miRNAs in Oxycarenus laetus linked to microbiome and metabolic regulation, and confirm they're real, functional molecules rather than sequencing artifacts.",
       approach: [
@@ -178,8 +178,8 @@ const projects = [
   },
     {
     title: "Regulatory and Structural Impact of SNP rs150260808 on TCIRG1 in Osteoclast-Mediated Bone Resorption",
-    description: "A collaborative research study (JHU Advanced Academic Programs) combining protein structural modeling, NGS analysis, and regulatory genomics to characterize a rare TCIRG1 missense variant linked to osteopetrosis.",
-    tags: ["AlphaFold", "PyMOL", "RNA-seq", "GTEx"],
+    description: "A collaborative research study combining protein structural modeling, NGS analysis, and regulatory genomics to characterize a rare TCIRG1 missense variant linked to osteopetrosis.",
+    tags: ["AlphaFold", "PyMOL", "RNA-seq", "GTEx","Bash"],
     results: {
       objective: "Determine whether the missense SNP rs150260808 (I721N) in TCIRG1 — the gene encoding the a3 subunit of the osteoclast V-ATPase proton pump — disrupts protein structure and/or gene regulation in a way that could explain its role in osteopetrosis.",
       approach: [
@@ -221,8 +221,8 @@ const projects = [
 // Skills shown as clickable chips — these are the ones that appear as tags
 // on at least one project above, so every chip is clickable and meaningful.
 const skillCategories = {
-  "Programming": ["Python", "R", "JavaScript"],
-  "Bioinformatics": ["RNA-seq", "scRNA-seq", "Seurat", "DESeq2", "miRDeep2"],
+  "Programming": ["Python", "R", "Bash", "CSS", "MySQL", "JavaScript"],
+  "Bioinformatics": ["RNA-seq", "scRNA-seq", "Seurat", "ggplot2", "DESeq2", "Galaxy", "miRDeep2", "Stem-loop RT-PCR"],
   "Structural Biology": ["AlphaFold", "PyMOL", "GTEx"],
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Scikit-learn"]
 };
@@ -230,9 +230,9 @@ const skillCategories = {
 // Remaining tools from the resume that aren't tied to a specific project
 // above — shown as a plain reference list beneath the heatmap.
 const otherSkills = [
-  "Bash", "C", "MySQL", "CSS", "Docker", "Git", "RDBMS", "NGS", "IGV",
-  "Galaxy", "BWA", "STAR", "BLAST", "SRA Toolkit", "Chimera", "Samtools",
-  "Kraken", "GATK", "BEDtools", "VCFtools", "ggplot2", "Biopython",
+  "C", "Docker", "Git", "RDBMS", "NGS", "IGV",
+  "BWA", "STAR", "BLAST", "SRA Toolkit", "Chimera", "Samtools",
+  "Kraken", "GATK", "BEDtools", "VCFtools", "Biopython",
   "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt",
   "NCBI", "Ensembl"
 ];
