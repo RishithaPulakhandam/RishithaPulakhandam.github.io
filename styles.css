@@ -8,7 +8,7 @@
   --amber:#C98A34;
   --coral2:#B2523C;
   --line:#DCDAD1;
-  --max:1100px;
+  --max:min(1400px, 92vw);
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
