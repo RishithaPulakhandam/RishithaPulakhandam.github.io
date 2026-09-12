@@ -215,7 +215,7 @@ const projects = [
         }
       ]
     }
-  }
+  },
     {
     title: "Computational Analysis of Fibrinogen: Structural Implications in Blood Clotting",
     description: "An individual computational bioinformatics project characterizing the FGA missense variant Arg573Cys and its structural, regulatory, and post-translational context in fibrinogen-mediated blood clotting.",
