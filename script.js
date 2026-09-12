@@ -91,7 +91,33 @@ const projects = [
         "Manual review of predicted vs. actual labels on test samples showed the large majority matching correctly, with occasional confusion between biologically similar classes (e.g., predicting class 3 instead of class 1)."
       ],
       interpretation: "The fact that validation accuracy tracked training accuracy this closely — rather than plateauing while training accuracy kept climbing — is the real evidence the model generalizes, not just the final accuracy number. The specific misclassification pattern (adjacent classes confused, not random ones) also makes biological sense: gene expression profiles between related cancer types can genuinely overlap.",
-      visual: { type: "network", title: "Network architecture", layers: [{ label: "Input", detail: "gene expression features" }, { label: "Dense · 40", detail: "ReLU" }, { label: "Dense · 20", detail: "ReLU" }, { label: "Softmax · 5", detail: "cancer types" }] }
+      visuals: [
+  { type: "network", title: "Network architecture", layers: [{ label: "Input", detail: "gene expression features" }, { label: "Dense · 40", detail: "ReLU" }, { label: "Dense · 20", detail: "ReLU" }, { label: "Softmax · 5", detail: "cancer types" }] },
+  {
+    type: "line",
+    title: "Training accuracy over 200 epochs",
+    xLabel: "epoch", yLabel: "accuracy",
+    xMin: 0, xMax: 200, yMin: 0, yMax: 1,
+    xTicks: [0, 50, 100, 150, 200],
+    series: [
+      { label: "Train", color: "#1F6F6B", points: [{x:0,y:0.25},{x:25,y:0.599},{x:50,y:0.785},{x:75,y:0.885},{x:100,y:0.938},{x:125,y:0.967},{x:150,y:0.982},{x:175,y:0.991},{x:200,y:0.995}] },
+      { label: "Validation", color: "#C98A34", points: [{x:0,y:0.25},{x:25,y:0.557},{x:50,y:0.733},{x:75,y:0.834},{x:100,y:0.892},{x:125,y:0.925},{x:150,y:0.944},{x:175,y:0.955},{x:200,y:0.962}] }
+    ],
+    note: "Illustrative reconstruction of the reported trend (train and validation accuracy rising together, no divergence) — exact per-epoch values weren't captured from the notebook run."
+  },
+  {
+    type: "line",
+    title: "Training loss over 200 epochs",
+    xLabel: "epoch", yLabel: "loss",
+    xMin: 0, xMax: 200, yMin: 0, yMax: 1.75,
+    xTicks: [0, 50, 100, 150, 200],
+    series: [
+      { label: "Train", color: "#1F6F6B", points: [{x:0,y:1.66},{x:25,y:0.974},{x:50,y:0.58},{x:75,y:0.354},{x:100,y:0.224},{x:125,y:0.15},{x:150,y:0.107},{x:175,y:0.083},{x:200,y:0.069}] },
+      { label: "Validation", color: "#C98A34", points: [{x:0,y:1.71},{x:25,y:0.962},{x:50,y:0.561},{x:75,y:0.347},{x:100,y:0.232},{x:125,y:0.171},{x:150,y:0.138},{x:175,y:0.12},{x:200,y:0.111}] }
+    ],
+    note: "Illustrative reconstruction of the reported trend (both losses decreasing and plateauing) — exact per-epoch values weren't captured from the notebook run."
+  }
+]
     }
   },
   {
