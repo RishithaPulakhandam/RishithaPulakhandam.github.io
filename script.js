@@ -103,7 +103,7 @@ const projects = [
       { label: "Train", color: "#1F6F6B", points: [{x:0,y:0.25},{x:25,y:0.599},{x:50,y:0.785},{x:75,y:0.885},{x:100,y:0.938},{x:125,y:0.967},{x:150,y:0.982},{x:175,y:0.991},{x:200,y:0.995}] },
       { label: "Validation", color: "#C98A34", points: [{x:0,y:0.25},{x:25,y:0.557},{x:50,y:0.733},{x:75,y:0.834},{x:100,y:0.892},{x:125,y:0.925},{x:150,y:0.944},{x:175,y:0.955},{x:200,y:0.962}] }
     ],
-    note: "Illustrative reconstruction of the reported trend (train and validation accuracy rising together, no divergence) — exact per-epoch values weren't captured from the notebook run."
+    note: "Illustrative reconstruction of the reported trend (train and validation accuracy rising together, no divergence)."
   },
   {
     type: "line",
@@ -115,7 +115,7 @@ const projects = [
       { label: "Train", color: "#1F6F6B", points: [{x:0,y:1.66},{x:25,y:0.974},{x:50,y:0.58},{x:75,y:0.354},{x:100,y:0.224},{x:125,y:0.15},{x:150,y:0.107},{x:175,y:0.083},{x:200,y:0.069}] },
       { label: "Validation", color: "#C98A34", points: [{x:0,y:1.71},{x:25,y:0.962},{x:50,y:0.561},{x:75,y:0.347},{x:100,y:0.232},{x:125,y:0.171},{x:150,y:0.138},{x:175,y:0.12},{x:200,y:0.111}] }
     ],
-    note: "Illustrative reconstruction of the reported trend (both losses decreasing and plateauing) — exact per-epoch values weren't captured from the notebook run."
+    note: "Illustrative reconstruction of the reported trend (both losses decreasing and plateauing)."
   }
 ]
     }
@@ -303,7 +303,7 @@ const otherSkills = [
   "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt", "Ensembl"
 ];
 
-const roles = ["clinical NLP", "single-cell genomics", "precision oncology", "small RNA biology"];
+const roles = ["clinical NLP", "Genomics", "single-cell genomics", "precision oncology", "small RNA biology"];
 
 // ============================================================
 // Hero read track
