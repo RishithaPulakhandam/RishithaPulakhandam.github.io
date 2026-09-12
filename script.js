@@ -219,7 +219,7 @@ const projects = [
   {
     title: "Computational Analysis of Fibrinogen: Structural Implications in Blood Clotting",
     description: "An individual computational bioinformatics project characterizing the FGA missense variant Arg573Cys and its structural, regulatory, and post-translational context in fibrinogen-mediated blood clotting.",
-    tags: ["Chimera", "BLAST", "ClinVar", "PDB", "Python"],
+    tags: ["Chimera", "BLAST", "ClinVar", "PDB", "NCBI", "Python"],
     results: {
       objective: "Determine how the FGA missense variant p.Arg573Cys (NM_000508.3:c.1717C>T) — implicated in congenital afibrinogenemia — alters the structure of the fibrinogen Aα chain, and characterize the broader structural and regulatory context around it (secondary structure, post-translational modification sites, and conservation).",
       approach: [
@@ -262,10 +262,10 @@ const projects = [
 // on at least one project above, so every chip is clickable and meaningful.
 const skillCategories = {
   "Programming": ["Python", "R", "Bash", "CSS", "MySQL", "JavaScript"],
-  "Bioinformatics": ["RNA-seq", "scRNA-seq", "BLAST", "Seurat", "ggplot2", "DESeq2", "Galaxy", "miRDeep2", "Stem-loop RT-PCR"],
+  "Bioinformatics": ["RNA-seq", "scRNA-seq", "BLAST", "Seurat", "ggplot2", "DESeq2", "Galaxy", "StringTie", "miRDeep2", "Stem-loop RT-PCR"],
   "Structural Biology": ["AlphaFold", "PyMOL", "Chimera", "GTEx"],
   "Databases": ["ClinVar", "NCBI", "PDB"],
-  "Data & ML": ["PCA", "k-NN", "Random Forest", "Scikit-learn"]
+  "Data & ML": ["PCA", "k-NN", "Random Forest", "Neural Network", "Scikit-learn"]
 };
 
 // Remaining tools from the resume that aren't tied to a specific project
