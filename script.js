@@ -216,14 +216,55 @@ const projects = [
       ]
     }
   }
+    {
+    title: "Computational Analysis of Fibrinogen: Structural Implications in Blood Clotting",
+    description: "An individual computational bioinformatics project characterizing the FGA missense variant Arg573Cys and its structural, regulatory, and post-translational context in fibrinogen-mediated blood clotting.",
+    tags: ["Chimera", "BLAST", "ClinVar", "PDB", "Python"],
+    results: {
+      objective: "Determine how the FGA missense variant p.Arg573Cys (NM_000508.3:c.1717C>T) — implicated in congenital afibrinogenemia — alters the structure of the fibrinogen Aα chain, and characterize the broader structural and regulatory context around it (secondary structure, post-translational modification sites, and conservation).",
+      approach: [
+        "Identified and catalogued FGA variants via NCBI Gene and Ensembl, cross-referencing ClinVar for pathogenicity classifications, then located the exact residue position of Arg573Cys using its UniProt entry (P02671).",
+        "Retrieved the corresponding PDB structure and used UCSF Chimera's command line (select :573) to isolate and visualize the mutation site on the 3D structure.",
+        "Wrote a BioPython pairwise-alignment script (Bio.pairwise2) to programmatically compare wild-type and mutant FGA sequences and confirm the exact position and identity of the nucleotide change.",
+        "Analyzed secondary structure composition of the full fibrinogen structure (PDB 3GHG) using DSSP, and cross-referenced known post-translational modification sites (phosphorylation, glycosylation, disulfide bonds) via UniProt and PhosphoSitePlus.",
+        "Ran a BLAST search on the fibrinogen gamma chain's C-terminal 'P domain' (PDB 1FIC) to assess cross-species conservation.",
+        "Cross-referenced FGA mutation frequency across cancer types using TCGA tumor sample data (cBioPortal-style lollipop/frequency plot)."
+      ],
+      keyResults: [
+        "Confirmed p.Arg573Cys as a missense variant classified in ClinVar as likely pathogenic for congenital afibrinogenemia, first submitted 2018 and last evaluated 2021 (dbSNP: rs121909613).",
+        "DSSP analysis of the fibrinogen structure showed a secondary structure composition of 41.9% alpha-helix, 12.8% beta-strand, 10.7% turns, and 20.2% random coil — a helix-dominant fold consistent with fibrinogen's elongated coiled-coil architecture.",
+        "UniProt PTM data identified multiple phosphoserine/phosphothreonine sites across the Aα chain, N-glycosylation at Asn686 and Ser351, and interchain disulfide bonds critical to the multimeric fibrinogen structure.",
+        "BLAST confirmed the gamma chain P domain is highly conserved across primates (100% identity to gorilla, >99% to chimpanzee), indicating strong evolutionary constraint on this region.",
+        "TCGA pan-cancer analysis (4,440 tumor samples, 15 cancer types) showed FGA missense mutations occur most frequently in endometrial, bladder, and colorectal cancers."
+      ],
+      highlight: "The Arg→Cys substitution isn't just a size/shape change — it swaps a positively charged residue for one carrying a reactive thiol group. Arginine's charge likely supports ionic interactions and hydrogen bonding that help hold the local fold together, while the new cysteine's thiol group introduces the possibility of forming an unintended disulfide bond with another cysteine nearby. That's a structurally 'active' failure mode, not just a passive destabilization — it could create abnormal cross-linking that a simple loss-of-charge mutation wouldn't.",
+      interpretation: "Three independent lines of evidence point the same direction: the loss of a charged, hydrogen-bonding residue at 573 (structural), a ClinVar pathogenicity classification maintained over multiple years of review (clinical), and a helix-rich fold at that region of the protein where disrupting local structure could propagate along the coiled-coil (contextual, from DSSP). As with any single-mutation computational study, this is inference from structure and database annotation rather than a direct biophysical measurement — the report's own conclusion is right to flag that in vitro clotting assays or NMR/crystallography would be needed to confirm the predicted effect on fibrin polymerization."
+      ,
+      visuals: [
+        {
+          type: "bars",
+          title: "Fibrinogen secondary structure composition (DSSP)",
+          bars: [
+            { label: "Alpha-helix (H)", value: 41.9, total: 100, suffix: "%" },
+            { label: "Beta-strand (E)", value: 12.8, total: 100, suffix: "%" },
+            { label: "Turns (T)", value: 10.7, total: 100, suffix: "%" },
+            { label: "Bend (S)", value: 8.4, total: 100, suffix: "%" },
+            { label: "3-10 helix (G)", value: 4.9, total: 100, suffix: "%" },
+            { label: "Random coil", value: 20.2, total: 100, suffix: "%" }
+          ]
+        }
+      ]
+    }
+  }
 ];
 
 // Skills shown as clickable chips — these are the ones that appear as tags
 // on at least one project above, so every chip is clickable and meaningful.
 const skillCategories = {
   "Programming": ["Python", "R", "Bash", "CSS", "MySQL", "JavaScript"],
-  "Bioinformatics": ["RNA-seq", "scRNA-seq", "Seurat", "ggplot2", "DESeq2", "Galaxy", "miRDeep2", "Stem-loop RT-PCR"],
-  "Structural Biology": ["AlphaFold", "PyMOL", "GTEx"],
+  "Bioinformatics": ["RNA-seq", "scRNA-seq", "BLAST", "Seurat", "ggplot2", "DESeq2", "Galaxy", "miRDeep2", "Stem-loop RT-PCR"],
+  "Structural Biology": ["AlphaFold", "PyMOL", "Chimera", "GTEx"],
+  "Databases": ["ClinVar", "NCBI", "PDB"]
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Scikit-learn"]
 };
 
@@ -231,10 +272,9 @@ const skillCategories = {
 // above — shown as a plain reference list beneath the heatmap.
 const otherSkills = [
   "C", "Docker", "Git", "RDBMS", "NGS", "IGV",
-  "BWA", "STAR", "BLAST", "SRA Toolkit", "Chimera", "Samtools",
+  "BWA", "STAR", "SRA Toolkit", "Samtools",
   "Kraken", "GATK", "BEDtools", "VCFtools", "Biopython",
-  "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt",
-  "NCBI", "Ensembl"
+  "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt", "Ensembl"
 ];
 
 const roles = ["clinical NLP", "single-cell genomics", "precision oncology", "small RNA biology"];
