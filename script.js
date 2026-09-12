@@ -176,7 +176,7 @@ const projects = [
       visual: { type: "stat", value: "75%", label: "Best model forecast accuracy" }
     }
   },
-    {
+  {
     title: "Regulatory and Structural Impact of SNP rs150260808 on TCIRG1 in Osteoclast-Mediated Bone Resorption",
     description: "A collaborative research study combining protein structural modeling, NGS analysis, and regulatory genomics to characterize a rare TCIRG1 missense variant linked to osteopetrosis.",
     tags: ["AlphaFold", "PyMOL", "RNA-seq", "GTEx","Bash"],
@@ -216,7 +216,7 @@ const projects = [
       ]
     }
   },
-    {
+  {
     title: "Computational Analysis of Fibrinogen: Structural Implications in Blood Clotting",
     description: "An individual computational bioinformatics project characterizing the FGA missense variant Arg573Cys and its structural, regulatory, and post-translational context in fibrinogen-mediated blood clotting.",
     tags: ["Chimera", "BLAST", "ClinVar", "PDB", "Python"],
@@ -264,7 +264,7 @@ const skillCategories = {
   "Programming": ["Python", "R", "Bash", "CSS", "MySQL", "JavaScript"],
   "Bioinformatics": ["RNA-seq", "scRNA-seq", "BLAST", "Seurat", "ggplot2", "DESeq2", "Galaxy", "miRDeep2", "Stem-loop RT-PCR"],
   "Structural Biology": ["AlphaFold", "PyMOL", "Chimera", "GTEx"],
-  "Databases": ["ClinVar", "NCBI", "PDB"]
+  "Databases": ["ClinVar", "NCBI", "PDB"],
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Scikit-learn"]
 };
 
