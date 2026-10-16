@@ -104,7 +104,7 @@ section{padding:52px 0; border-top:1px solid var(--line);}
 .job-body{
   max-height:0; overflow:hidden; transition:max-height .3s ease;
 }
-.job[data-open="true"] .job-body{max-height:800px;}
+.job[data-open="true"] .job-body{max-height:2000px;}
 .lab-group{margin-bottom:6px;}
 .lab-name{
   display:block; font-family:'Fraunces',serif; font-style:italic; font-weight:500;
