@@ -533,7 +533,7 @@ function scaleFn(domainMin, domainMax, rangeMin, rangeMax) {
 }
 
 function svgScatter(groups, opts) {
-  const W = 320, H = 190, padL = 30, padB = 26, padT = 14, padR = 14;
+  const W = 600, H = 320, padL = 64, padB = 52, padT = 24, padR = 28;
   const xs = scaleFn(0, 100, padL, W - padR);
   const ys = scaleFn(0, 100, H - padB, padT);
   const points = groups.map((g) =>
