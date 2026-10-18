@@ -224,7 +224,7 @@ const projects = [
         "Comparable to known pathogenic TCIRG1 missense mutations (I287M, L802P) that also destabilize the V-ATPase complex — positioning I721N as a likely partial (not complete) loss-of-function variant."
       ],
       highlight: "The most interesting finding is that this SNP looks like it acts through two independent mechanisms at once: it destabilizes the V-ATPase protein directly (structural), and it sits in a CTCF binding site that appears to suppress TCIRG1 expression (regulatory). Most variant-impact studies only characterize one of these — catching both in the same variant is what makes the case for pathogenicity stronger than either finding alone.",
-      interpretation: "Convergent evidence across three independent methods — structural modeling, functional prediction algorithms, and expression data — all pointing the same direction is what makes this more than a single computational red flag. That said, every one of these lines of evidence is still in-silico; the CRISPR validation plan proposed in the study is the actual test of whether this holds up in living cells, which is an important caveat to be upfront about in an interview.",
+      interpretation: "Convergent evidence across three independent methods — structural modeling, functional prediction algorithms, and expression data — all pointing the same direction is what makes this more than a single computational red flag. That said, every one of these lines of evidence is still in-silico; the CRISPR validation plan proposed in the study is the actual test of whether this holds up in living cells.",
       visuals: [
         { type: "stat", value: "0.01 / 0.998 / -5.56", label: "SIFT / PolyPhen-2 / PROVEAN — all three call I721N damaging" },
         {
