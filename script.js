@@ -242,6 +242,30 @@ const projects = [
       ]
     }
   },
+    {
+    title: "Disease-Associated Gene and Transcript Annotation Using biomaRt",
+    description: "Used the R package biomaRt to pull Ensembl gene and transcript annotations for five OMIM identifiers linked to Huntington's disease and related neurological disorders, then compared gene-level and transcript-level results.",
+    tags: ["R", "biomaRt", "Ensembl", "OMIM"],
+    github: "https://github.com/RishithaPulakhandam/Disease-Associated-Gene-and-Transcript-Annotation-Using-biomaRt",
+    results: {
+      objective: "Retrieve gene and transcript annotations for five OMIM disorder identifiers (Huntington disease, three Huntington disease-like disorders, and SCA17) and show how one gene can map to several transcripts.",
+      approach: [
+        "Queried the Ensembl human gene dataset through biomaRt, filtering on mim_morbid_accession with the five OMIM identifiers.",
+        "Gene-level query: retrieved Entrez Gene ID, HGNC symbol, and Ensembl Gene ID.",
+        "Transcript-level query: used the same filter and identifiers, but retrieved Ensembl Transcript IDs instead of Ensembl Gene IDs.",
+        "Compared the two output tables to examine the relationship between genes and their transcripts."
+      ],
+      keyResults: [
+        "Produced a gene annotation table (Entrez ID, HGNC symbol, Ensembl Gene ID) and a transcript annotation table (HGNC symbol, Entrez ID, Ensembl Transcript ID).",
+        "The transcript-level table has more rows than the gene-level table because a single gene can return multiple transcripts, each with its own stable Ensembl Transcript ID."
+      ],
+      interpretation: "The difference in row counts reflects real biology rather than duplicated data: alternative splicing and other transcript-processing mechanisms let one gene give rise to multiple transcripts. Exact counts depend on the Ensembl release queried, so the tables should be regenerated before drawing conclusions about specific gene-to-transcript relationships.",
+      visuals: [
+        { type: "legend", title: "OMIM identifiers queried", items: ["143100 · HD", "603218 · HDL1", "606438 · HDL2", "604802 · HDL3", "607136 · SCA17"] },
+        { type: "flow", title: "Pipeline", steps: ["5 OMIM IDs", "biomaRt query vs. Ensembl (mim_morbid_accession)", "Gene-level table", "Transcript-level table", "Compare row counts"] }
+      ]
+    }
+  },
   {
     title: "Computational Analysis of Fibrinogen: Structural Implications in Blood Clotting",
     description: "An individual computational bioinformatics project characterizing the FGA missense variant Arg573Cys and its structural, regulatory, and post-translational context in fibrinogen-mediated blood clotting.",
@@ -288,9 +312,9 @@ const projects = [
 // on at least one project above, so every chip is clickable and meaningful.
 const skillCategories = {
   "Programming": ["Python", "R", "Bash", "CSS", "MySQL", "JavaScript"],
-  "Bioinformatics": ["RNA-seq", "scRNA-seq", "BLAST", "Seurat", "ggplot2", "DESeq2", "Galaxy", "StringTie", "miRDeep2", "Stem-loop RT-PCR"],
+  "Bioinformatics": ["RNA-seq", "scRNA-seq", "BLAST", "Seurat", "ggplot2", "DESeq2", "Galaxy", "StringTie", "miRDeep2", "Stem-loop RT-PCR", "biomaRt"],
   "Structural Biology": ["AlphaFold", "PyMOL", "Chimera", "GTEx"],
-  "Databases": ["ClinVar", "NCBI", "PDB"],
+  "Databases": ["ClinVar", "NCBI", "PDB", "Ensembl","OMIM],
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Neural Network", "Scikit-learn"]
 };
 
@@ -300,7 +324,7 @@ const otherSkills = [
   "C", "Docker", "Git", "RDBMS", "NGS", "IGV",
   "BWA", "STAR", "SRA Toolkit", "Samtools",
   "Kraken", "GATK", "BEDtools", "VCFtools", "Biopython",
-  "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt", "Ensembl"
+  "Power BI", "Nextflow", "SVM", "Linux", "HPC", "Azure", "UniProt", "UCSC Genome Browser"
 ];
 
 const roles = ["clinical NLP", "Genomics", "single-cell genomics", "precision oncology", "small RNA biology"];
