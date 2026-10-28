@@ -558,27 +558,36 @@ function svgScatter(groups, opts) {
 }
 
 function svgLine(series, opts) {
-  const W = 320, H = 190, padL = 32, padB = 26, padT = 14, padR = 14;
+  const W = 600, H = 320, padL = 64, padB = 56, padT = 20, padR = 28;
   const xs = scaleFn(opts.xMin, opts.xMax, padL, W - padR);
   const ys = scaleFn(opts.yMin, opts.yMax, H - padB, padT);
+  const plotMidX = (padL + W - padR) / 2;
+  const plotMidY = (padT + H - padB) / 2;
+
   const paths = series.map((s) => {
     const d = s.points.map((p, i) => `${i === 0 ? "M" : "L"}${xs(p.x).toFixed(1)},${ys(p.y).toFixed(1)}`).join(" ");
-    return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.2" />`;
+    return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2.5" />`;
   }).join("");
+
   const xTicks = (opts.xTicks || []).map((t) =>
-    `<text x="${xs(t).toFixed(1)}" y="${H - padB + 14}" class="viz-tick" text-anchor="middle">${t}</text>`
+    `<text x="${xs(t).toFixed(1)}" y="${H - padB + 20}" class="viz-tick" text-anchor="middle">${t}</text>`
   ).join("");
+
   const legend = series.map((s) =>
     `<span class="viz-legend-item"><span class="viz-legend-dot" style="background:${s.color}"></span>${s.label}</span>`
   ).join("");
+
   return `
     <div class="viz viz-line">
       <span class="viz-title">${opts.title}</span>
       <svg viewBox="0 0 ${W} ${H}" class="viz-svg">
         <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}" stroke="var(--line)" stroke-width="1" />
         <line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="var(--line)" stroke-width="1" />
-        <text x="${padL - 8}" y="${padT + 6}" class="viz-axis-label" text-anchor="end">${opts.yLabel || ""}</text>
-        <text x="${W - padR}" y="${H - padB + 16}" class="viz-axis-label" text-anchor="end">${opts.xLabel || ""}</text>
+        <!-- y-axis label: rotated, centred on the axis, inside the viewBox -->
+        <text x="18" y="${plotMidY}" class="viz-axis-label" text-anchor="middle"
+              transform="rotate(-90 18 ${plotMidY})">${opts.yLabel || ""}</text>
+        <!-- x-axis label: centred below the tick numbers -->
+        <text x="${plotMidX}" y="${H - 8}" class="viz-axis-label" text-anchor="middle">${opts.xLabel || ""}</text>
         ${xTicks}
         ${paths}
       </svg>
