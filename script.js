@@ -314,7 +314,7 @@ const skillCategories = {
   "Programming": ["Python", "R", "Bash", "CSS", "MySQL", "JavaScript"],
   "Bioinformatics": ["RNA-seq", "scRNA-seq", "BLAST", "Seurat", "ggplot2", "DESeq2", "Galaxy", "StringTie", "miRDeep2", "Stem-loop RT-PCR", "biomaRt"],
   "Structural Biology": ["AlphaFold", "PyMOL", "Chimera", "GTEx"],
-  "Databases": ["ClinVar", "NCBI", "PDB", "Ensembl","OMIM],
+  "Databases": ["ClinVar", "NCBI", "PDB", "Ensembl","OMIM"],
   "Data & ML": ["PCA", "k-NN", "Random Forest", "Neural Network", "Scikit-learn"]
 };
 
