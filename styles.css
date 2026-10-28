@@ -266,6 +266,18 @@ section{padding:52px 0; border-top:1px solid var(--line);}
   width: 100%;
   height: auto;
 }
+/* ---- Chart text, legend, notes ---- */
+.viz-svg{overflow:visible;}
+.viz-svg text{font-family:'IBM Plex Mono',monospace; fill:var(--ink-soft);}
+.viz-axis-label{font-size:13px;}
+.viz-tick{font-size:12px;}
+
+.viz-legend-row{display:flex; flex-wrap:wrap; gap:16px; margin-top:10px;}
+.viz-legend-item{display:inline-flex; align-items:center; gap:6px; font-size:0.78rem; color:var(--ink-soft);}
+.viz-legend-dot{display:inline-block; width:10px; height:10px; border-radius:50%;}
+
+.viz-note{display:block; margin-top:6px; font-size:0.74rem; font-style:italic; color:var(--ink-soft);}
+.viz + .viz{margin-top:28px;}  /* spacing between the stacked charts */
 
 /* ---- Publication ---- */
 .pub{border-left:3px solid var(--amber); padding-left:20px; max-width:70ch; color:var(--ink-soft); font-size:0.96rem;}
